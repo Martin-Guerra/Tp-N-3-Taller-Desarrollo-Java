@@ -14,19 +14,19 @@ public class RecursiveSolution implements IProblemSolver {
         Arrays.sort(data);
         int j = data.length;
         for(int i = 0; data[i] < target; i++){
-            this.resolveProble(pair, data, data[i], i,  i, j, target);
+            this.resolveProblem(pair, data, data[i], i,  i, j, target);
         }
         return pair;
     }
 
-    private void resolveProble(List<Pair> pair, int[] data, int element, int pos_elem, int begin, int end, int target) {
+    private void resolveProblem(List<Pair> pair, int[] data, int element, int pos_elem, int begin, int end, int target) {
         if(begin < end){
             int middle = (end - begin) / 2;
                 if (element + data[middle] <= target) {
-                    this.resolveProble(pair, data, element, pos_elem, begin, middle, target);
-                    this.resolveProble(pair, data, element, pos_elem, middle + 1, end, target);
+                    this.resolveProblem(pair, data, element, pos_elem, begin, middle, target);
+                    this.resolveProblem(pair, data, element, pos_elem, middle + 1, end, target);
                 } else {
-                    this.resolveProble(pair, data, element, pos_elem, begin, middle, target);
+                    this.resolveProblem(pair, data, element, pos_elem, begin, middle, target);
                 }
         }
         else{
