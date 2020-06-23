@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SolutionSortSearch implements IProblemSolver {
+public class QuickSortAndSequentialSearch implements IProblemSolver {
 
     @Override
     public List<Pair> isSumIn(int[] data, int target) {

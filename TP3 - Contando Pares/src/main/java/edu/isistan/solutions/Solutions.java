@@ -1,7 +1,6 @@
 package edu.isistan.solutions;
 
 import java.util.Arrays;
-import java.util.List;
 
 import edu.isistan.IProblemSolver;
 import edu.isistan.ProblemGen;
@@ -12,9 +11,9 @@ public class Solutions {
 
 		ProblemGen problemGen = new ProblemGen();
 
-		IProblemSolver naive = new SolutionSortSearch();
+		IProblemSolver naive = new MergeSortAndBinarySearch();
 
-		for(int i=0;i<20;i++) {
+		for(int i = 0; i < 20; i++) {
 			problemGen.genRandomProblem(1000);
 			System.out.println(Arrays.toString(problemGen.getData()));
 			long start = System.currentTimeMillis(); //acá no está haciendo el warm up para empezar con el benchmarking!!
