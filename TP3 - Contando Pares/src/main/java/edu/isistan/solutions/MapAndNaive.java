@@ -14,8 +14,8 @@ public class MapAndNaive implements IProblemSolver {
 
         for (int i = 0; i < optimizedData.length; i++)
             for (int j = i + 1; j < optimizedData.length; j++) {
-                if (((Integer) optimizedData[i] + (Integer) optimizedData[j]) == target)
-                    pairs.add(new Pair((Integer) optimizedData[i], (Integer) optimizedData[j]));
+                if ((optimizedData[i] + optimizedData[j]) == target)
+                    pairs.add(new Pair(optimizedData[i], optimizedData[j]));
             }
 
         return pairs;
@@ -25,7 +25,7 @@ public class MapAndNaive implements IProblemSolver {
         Map<Integer, Integer> numbers = new HashMap<>();
 
         for (int i = 0; i < data.length; i++) {
-            if (!numbers.keySet().contains(data[i])) {
+            if (!numbers.containsKey(data[i])) {
                 int ocurrencias = 0;
 
                 for (int j = i; j < data.length; j++) {

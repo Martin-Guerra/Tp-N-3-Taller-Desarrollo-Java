@@ -2,6 +2,7 @@ package edu.isistan;
 
 import java.util.List;
 
+@SuppressWarnings("all")
 public interface IProblemSolver {
 
     /**

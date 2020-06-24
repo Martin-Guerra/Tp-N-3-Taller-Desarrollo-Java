@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+@SuppressWarnings("all")
 public class ProblemGen {
 
     protected int target;
@@ -22,8 +23,7 @@ public class ProblemGen {
 
 
     public boolean genIrresolProblem(int size) {
-        return this.genIrresolProblem(size,
-                (int) (Math.random() * 2 * Integer.MAX_VALUE + Integer.MIN_VALUE));
+        return this.genIrresolProblem(size, (int) (Math.random() * 2 * Integer.MAX_VALUE + Integer.MIN_VALUE));
     }
 
 

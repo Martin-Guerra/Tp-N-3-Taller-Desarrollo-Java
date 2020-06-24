@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 
 import edu.isistan.IProblemSolver;
 
+@SuppressWarnings("unused")
 public class SolutionNaive2 implements IProblemSolver {
 
     public List<Pair> isSumIn(int[] data, int target) {

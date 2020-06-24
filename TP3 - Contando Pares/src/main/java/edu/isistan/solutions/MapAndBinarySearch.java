@@ -5,6 +5,7 @@ import edu.isistan.IProblemSolver;
 import java.util.*;
 
 public class MapAndBinarySearch implements IProblemSolver {
+
     @Override
     public List<Pair> isSumIn(int[] data, int target) {
         List<Pair> pairs = new ArrayList<>();
@@ -23,7 +24,7 @@ public class MapAndBinarySearch implements IProblemSolver {
         Map<Integer, Integer> numbers = new HashMap<>();
 
         for (int i = 0; i < data.length; i++) {
-            if (!numbers.keySet().contains(data[i])) {
+            if (!numbers.containsKey(data[i])) {
                 int ocurrencias = 0;
 
                 for (int j = i; j < data.length; j++) {

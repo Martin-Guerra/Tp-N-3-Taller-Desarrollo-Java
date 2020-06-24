@@ -5,7 +5,7 @@ import edu.isistan.IProblemSolver;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("DuplicatedCode")
+@SuppressWarnings({"DuplicatedCode", "unused"})
 public class MergeSortAndBinarySearch implements IProblemSolver {
 
     @Override

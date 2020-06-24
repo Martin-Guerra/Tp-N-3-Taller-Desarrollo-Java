@@ -6,15 +6,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class QuickSortAndSequentialSearch implements IProblemSolver {
 
     @Override
     public List<Pair> isSumIn(int[] data, int target) {
         List<Pair> pair = new ArrayList<>();
         Arrays.sort(data);
-        /*for(int i = 0; i < data.length; i++){
-            System.out.print(data[i] + ", ");
-        }*/
+
         for (int i = 0; i < data.length - 1 && data[i] <= target; i++) {
             int j = i + 1;
             while ((j < data.length) && (data[i] + data[j] < target)) {

@@ -3,9 +3,9 @@ package edu.isistan.solutions;
 import edu.isistan.IProblemSolver;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class MergeSortAndSequentialSearch implements IProblemSolver {
 
     @Override
@@ -15,8 +15,6 @@ public class MergeSortAndSequentialSearch implements IProblemSolver {
 
         //Ordenamiento con el método mergesort.
         this.mergeSort(data, 0, data.length - 1);
-
-        System.out.println(Arrays.toString(data));
 
         //Búsqueda secuencial.
         for (int i = 0; i < data.length; i++)
