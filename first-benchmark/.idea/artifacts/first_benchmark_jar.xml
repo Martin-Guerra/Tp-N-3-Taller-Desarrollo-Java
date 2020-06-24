@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="first-benchmark:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/first_benchmark_jar</output-path>
+    <root id="archive" name="first-benchmark.jar">
+      <element id="module-output" name="first-benchmark" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjdk/jmh/jmh-core/1.23/jmh-core-1.23.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../TP3 - Contando Pares/target/contandoPares-0.0.1-SNAPSHOT.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

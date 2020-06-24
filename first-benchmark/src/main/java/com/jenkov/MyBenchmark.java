@@ -31,14 +31,33 @@
 
 package com.jenkov;
 
+import edu.isistan.IProblemSolver;
+import edu.isistan.ProblemGen;
+import edu.isistan.solutions.*;
 import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
+
+import java.util.concurrent.TimeUnit;
 
 public class MyBenchmark {
 
-    @Benchmark
+    @Benchmark @BenchmarkMode(Mode.SingleShotTime) @OutputTimeUnit(TimeUnit.SECONDS)
     public void testMethod() {
-        // This is a demo/sample template for building your JMH benchmarks. Edit as needed.
-        // Put your benchmark code here.
+
+        ProblemGen problemGen = new ProblemGen();
+
+        IProblemSolver solver = new MapAndBinarySearch();
+
+        for (int i = 0; i < 20; i++) {
+            problemGen.genRandomProblem(20000);
+            long start = System.currentTimeMillis();
+            int target = (int) (Math.random() * 2 * Integer.MAX_VALUE + Integer.MIN_VALUE / 2);
+
+            System.out.println(" -- Pairs: " + solver.isSumIn(problemGen.getData(), target).size());
+            start = System.currentTimeMillis() - start;
+        }
     }
 
 }
