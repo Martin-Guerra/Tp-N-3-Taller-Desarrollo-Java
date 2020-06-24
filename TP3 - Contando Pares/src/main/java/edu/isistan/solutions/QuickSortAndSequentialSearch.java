@@ -15,13 +15,13 @@ public class QuickSortAndSequentialSearch implements IProblemSolver {
         /*for(int i = 0; i < data.length; i++){
             System.out.print(data[i] + ", ");
         }*/
-        for(int i = 0; i < data.length - 1 && data[i] <= target; i++){
+        for (int i = 0; i < data.length - 1 && data[i] <= target; i++) {
             int j = i + 1;
-            while((j < data.length) && (data[i] + data[j] < target)){
+            while ((j < data.length) && (data[i] + data[j] < target)) {
                 j++;
             }
-            if(j < data.length){
-                if(data[i] + data[j] == target) {
+            if (j < data.length) {
+                if (data[i] + data[j] == target) {
                     for (int k = j + 1; k < data.length && data[i] + data[k] == target; k++) {
                         pair.add((new Pair(data[i], data[k])));
                     }

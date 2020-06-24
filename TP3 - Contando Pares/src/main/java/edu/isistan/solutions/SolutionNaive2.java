@@ -6,19 +6,19 @@ import java.util.stream.IntStream;
 
 import edu.isistan.IProblemSolver;
 
-public class SolutionNaive2 implements IProblemSolver{
+public class SolutionNaive2 implements IProblemSolver {
 
-	public List<Pair> isSumIn(int[] data, int target) {
-		
-		List<Pair> pairs = new ArrayList<>();
-		
-		IntStream.range(0,  data.length)
-	    .forEach(i -> IntStream.range(i+1,  data.length)
-	        .filter(j -> i != j && data[i] + data[j] == target)
-	        .forEach(j -> pairs.add(new Pair(data[i], data[j])))
-	    		);
+    public List<Pair> isSumIn(int[] data, int target) {
 
-		return pairs;
-	}
+        List<Pair> pairs = new ArrayList<>();
+
+        IntStream.range(0, data.length)
+                .forEach(i -> IntStream.range(i + 1, data.length)
+                        .filter(j -> i != j && data[i] + data[j] == target)
+                        .forEach(j -> pairs.add(new Pair(data[i], data[j])))
+                );
+
+        return pairs;
+    }
 
 }

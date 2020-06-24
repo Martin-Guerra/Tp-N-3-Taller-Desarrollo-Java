@@ -22,7 +22,7 @@ public class MergeSortAndSequentialSearch implements IProblemSolver {
         for (int i = 0; i < data.length; i++)
             for (int j = i + 1; j < data.length; j++)
                 if ((data[i] + data[j]) == target)
-                    pairs.add(new Pair(data[i],data[j]));
+                    pairs.add(new Pair(data[i], data[j]));
 
         return pairs;
     }

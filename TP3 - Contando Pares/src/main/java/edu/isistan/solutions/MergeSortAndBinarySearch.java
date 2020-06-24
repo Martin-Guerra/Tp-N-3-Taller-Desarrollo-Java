@@ -15,7 +15,7 @@ public class MergeSortAndBinarySearch implements IProblemSolver {
         this.mergeSort(data, 0, data.length - 1);
 
         int j = data.length - 1;
-        for (int i = 0; i < data.length; i++){
+        for (int i = 0; i < data.length; i++) {
             this.resolveProblem(pairs, data, data[i], i, i, j, target);
         }
         return pairs;

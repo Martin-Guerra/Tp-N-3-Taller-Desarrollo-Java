@@ -4,61 +4,62 @@ import java.util.List;
 
 public interface IProblemSolver {
 
-	/**
-	 * Look in the data two integers that sums to target.
-	 * @param data
-	 * @param target
-	 * @return
-	 */
-	public List<Pair> isSumIn(int[] data, int target);
-	
-	public static class Pair{
-		private int i;
-		private int j;
+    /**
+     * Look in the data two integers that sums to target.
+     *
+     * @param data
+     * @param target
+     * @return
+     */
+    public List<Pair> isSumIn(int[] data, int target);
 
-		public Pair(int i, int j) {
-			super();
-			this.i = i;
-			this.j = j;
-		}
+    public static class Pair {
+        private int i;
+        private int j;
 
-		public int getI() {
-			return i;
-		}
+        public Pair(int i, int j) {
+            super();
+            this.i = i;
+            this.j = j;
+        }
 
-		public int getJ() {
-			return j;
-		}
+        public int getI() {
+            return i;
+        }
 
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + i;
-			result = prime * result + j;
-			return result;
-		}
+        public int getJ() {
+            return j;
+        }
 
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			Pair other = (Pair) obj;
-			if (i != other.i)
-				return false;
-			if (j != other.j)
-				return false;
-			return true;
-		}
+        @Override
+        public int hashCode() {
+            final int prime = 31;
+            int result = 1;
+            result = prime * result + i;
+            result = prime * result + j;
+            return result;
+        }
 
-		@Override
-		public String toString() {
-			return "Pair [i=" + i + ", j=" + j + "]";
-		}
-		
-	}
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj)
+                return true;
+            if (obj == null)
+                return false;
+            if (getClass() != obj.getClass())
+                return false;
+            Pair other = (Pair) obj;
+            if (i != other.i)
+                return false;
+            if (j != other.j)
+                return false;
+            return true;
+        }
+
+        @Override
+        public String toString() {
+            return "Pair [i=" + i + ", j=" + j + "]";
+        }
+
+    }
 }
