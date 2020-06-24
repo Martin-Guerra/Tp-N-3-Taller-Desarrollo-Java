@@ -4,7 +4,7 @@ import edu.isistan.IProblemSolver;
 
 import java.util.*;
 
-public class MapAndNaive implements IProblemSolver {
+public class MapAndBinarySearch implements IProblemSolver {
     @Override
     public List<Pair> isSumIn(int[] data, int target) {
         List<Pair> pairs = new ArrayList<>();
@@ -12,12 +12,10 @@ public class MapAndNaive implements IProblemSolver {
         Map<Integer, Integer> numbers = this.storeInMap(data);
         int[] optimizedData = numbers.keySet().stream().mapToInt(Integer::intValue).toArray();
 
-        for (int i = 0; i < optimizedData.length; i++)
-            for (int j = i + 1; j < optimizedData.length; j++) {
-                if (((Integer) optimizedData[i] + (Integer) optimizedData[j]) == target)
-                    pairs.add(new Pair((Integer) optimizedData[i], (Integer) optimizedData[j]));
-            }
-
+        int j = data.length - 1;
+        for (int i = 0; i < optimizedData.length; i++) {
+            this.resolveProblem(pairs, optimizedData, optimizedData[i], i, i, j, target);
+        }
         return pairs;
     }
 
@@ -38,5 +36,20 @@ public class MapAndNaive implements IProblemSolver {
         }
 
         return numbers;
+    }
+
+    private void resolveProblem(List<Pair> pairs, int[] data, int element, int pos_elem, int begin, int end, int target) {
+        int middle = (end - begin) / 2;
+        int suma = element + data[middle];
+
+        if (suma < target && begin < middle) {
+            this.resolveProblem(pairs, data, element, pos_elem, begin, middle, target);
+            middle += 1;
+            this.resolveProblem(pairs, data, element, pos_elem, middle, end, target);
+        } else if (suma == target) {
+            if (begin != pos_elem) {
+                pairs.add(new Pair(element, data[begin]));
+            }
+        }
     }
 }
