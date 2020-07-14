@@ -59,4 +59,9 @@ public class ProblemGen {
     public String toString() {
         return "ProblemGen [target=" + target + ", data=" + Arrays.toString(data) + "]";
     }
+
+    //usado para testear
+    public void setData(int[] data){this.data = data;}
+
+    public void setTarget(int target){this.target = target;}
 }
