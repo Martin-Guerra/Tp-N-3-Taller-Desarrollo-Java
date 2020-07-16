@@ -26,22 +26,28 @@ public class QuickSortAndBinarySearch implements IProblemSolver {
         int suma = element + data[middle];
 
         if(suma == target){
-            if (begin != pos_elem) {
+            if (middle != pos_elem) {
                 pairs.add(new Pair(element, data[middle]));
                 if(begin < middle) {
                     this.resolveProblem(pairs, data, element, pos_elem, begin, middle - 1, target);
                     this.resolveProblem(pairs, data, element, pos_elem, middle + 1, end, target);
+                    suma = element + data[middle+1];
+                    if (suma == target) {
+                        if (middle+1 != pos_elem) {
+                            pairs.add(new Pair(element, data[middle+1]));
+                        }
+                    }
                 }
             }
         }else {
             if(begin < middle) {
                 if(suma < target) {
                     this.resolveProblem(pairs, data, element, pos_elem, begin, middle, target);
-                    this.resolveProblem(pairs, data, element, pos_elem, middle, end, target);
+                    this.resolveProblem(pairs, data, element, pos_elem, middle + 1 , end, target);
                     suma = element + data[middle+1];
                     if (suma == target) {
-                        if (middle != pos_elem) {
-                            pairs.add(new Pair(element, data[middle]));
+                        if (middle+1 != pos_elem) {
+                            pairs.add(new Pair(element, data[middle+1]));
                         }
                     }
                 } else {
