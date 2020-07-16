@@ -25,30 +25,29 @@ public class QuickSortAndBinarySearch implements IProblemSolver {
         int middle = (begin + end) / 2;
         int suma = element + data[middle];
 
-        if (suma < target && begin < middle) {
-            this.resolveProblem(pairs, data, element, pos_elem, begin, middle, target);
-            this.resolveProblem(pairs, data, element, pos_elem, middle, end, target);
-            suma = element + data[middle+1];
-            if (suma == target) {
-                if (begin != pos_elem) {
-                    pairs.add(new Pair(element, data[begin]));
+        if(suma == target){
+            if (begin != pos_elem) {
+                pairs.add(new Pair(element, data[middle]));
+                if(begin < middle) {
+                    this.resolveProblem(pairs, data, element, pos_elem, begin, middle - 1, target);
+                    this.resolveProblem(pairs, data, element, pos_elem, middle + 1, end, target);
                 }
             }
-        }
-        else {
-            if (suma == target) {
-                if (begin != pos_elem) {
-                    pairs.add(new Pair(element, data[begin]));
-                }
-            }
-            /*else{
-                suma = data[middle+1] + element;
-                if (suma == target) {
-                    if (begin != pos_elem) {
-                        pairs.add(new Pair(element, data[begin]));
+        }else {
+            if(begin < middle) {
+                if(suma < target) {
+                    this.resolveProblem(pairs, data, element, pos_elem, begin, middle, target);
+                    this.resolveProblem(pairs, data, element, pos_elem, middle, end, target);
+                    suma = element + data[middle+1];
+                    if (suma == target) {
+                        if (middle != pos_elem) {
+                            pairs.add(new Pair(element, data[middle]));
+                        }
                     }
+                } else {
+                    this.resolveProblem(pairs, data, element, pos_elem, begin, middle, target);
                 }
-            }*/
+            }
         }
     }
 }
