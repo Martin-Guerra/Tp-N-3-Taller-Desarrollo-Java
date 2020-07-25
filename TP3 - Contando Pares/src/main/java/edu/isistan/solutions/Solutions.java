@@ -24,7 +24,7 @@ public class Solutions {
             System.out.println(start);
         }*/
         ProblemGen problemGen = new ProblemGen();
-        IProblemSolver solution = new QuickSortAndBinarySearch();
+        IProblemSolver solution = new MergeSortAndBinarySearch();
         int target = 4;
         int[] data = new int[10];
         data[0] = 1;

@@ -22,16 +22,57 @@ public class MergeSortAndBinarySearch implements IProblemSolver {
     }
 
     private void resolveProblem(List<Pair> pairs, int[] data, int element, int pos_elem, int begin, int end, int target) {
-        int middle = (end - begin) / 2;
+        int middle = (begin + end) / 2;
         int suma = element + data[middle];
 
-        if (suma < target && begin < middle) {
+        if(suma > target && begin < middle){
             this.resolveProblem(pairs, data, element, pos_elem, begin, middle, target);
-            middle += 1;
-            this.resolveProblem(pairs, data, element, pos_elem, middle, end, target);
-        } else if (suma == target) {
-            if (begin != pos_elem) {
-                pairs.add(new Pair(element, data[begin]));
+        } else{
+            if(suma < target && begin < middle){
+                this.resolveProblem(pairs, data, element, pos_elem, middle + 1, end, target);
+                if (middle + 2 == data.length - 1) {
+                    suma = element + data[middle + 2];
+                    if (suma == target && middle + 2 != pos_elem) {
+                        pairs.add(new Pair(element, data[middle + 2]));
+                    }
+                }
+            } else{
+                if(suma == target && begin == middle && middle != pos_elem){
+                    pairs.add(new Pair(element, data[middle]));
+                } else{
+                    if(begin < middle){
+                        if(data[middle - 1] != data[middle]){
+                            pairs.add(new Pair(element, data[middle]));
+                            this.resolveProblem(pairs, data, element, pos_elem, middle + 1, end, target);
+                            if (middle + 2 == data.length - 1) {
+                                suma = element + data[middle + 2];
+                                if (suma == target && middle + 2 != pos_elem) {
+                                    pairs.add(new Pair(element, data[middle + 2]));
+                                }
+                            }
+                        } else{
+                            if(data[middle - 1] == data[middle] && middle -1 != pos_elem){
+                                this.resolveProblem(pairs, data, element, pos_elem, begin, middle, target);
+                                this.resolveProblem(pairs, data, element, pos_elem, middle + 1, end, target);
+                                if (middle + 2 == data.length - 1) {
+                                    suma = element + data[middle + 2];
+                                    if (suma == target && middle + 2 != pos_elem) {
+                                        pairs.add(new Pair(element, data[middle + 2]));
+                                    }
+                                }
+                            }else {
+                                pairs.add(new Pair(element, middle));
+                                this.resolveProblem(pairs, data, element, pos_elem, middle + 1, end, target);
+                                if (middle + 2 == data.length - 1) {
+                                    suma = element + data[middle + 2];
+                                    if (suma == target && middle + 2 != pos_elem) {
+                                        pairs.add(new Pair(element, data[middle + 2]));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
