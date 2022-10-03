@@ -16,22 +16,25 @@ public class MergeSortAndBinarySearch implements IProblemSolver {
 
         int j = data.length - 1;
         for (int i = 0; i < data.length; i++) {
+            System.out.println("Iteration Numbeer: " + i);
             this.resolveProblem(pairs, data, data[i], i, i, j, target);
         }
         return pairs;
     }
 
     private void resolveProblem(List<Pair> pairs, int[] data, int element, int pos_elem, int begin, int end, int target) {
-        int middle = (end - begin) / 2;
+        int middle = (end + begin) / 2;
         int suma = element + data[middle];
 
-        if (suma < target && begin < middle) {
+        if (suma < target && begin < end) {
+            this.resolveProblem(pairs, data, element, pos_elem, middle + 1, end, target);
+        } else if(suma > target && begin < end){
             this.resolveProblem(pairs, data, element, pos_elem, begin, middle, target);
-            middle += 1;
-            this.resolveProblem(pairs, data, element, pos_elem, middle, end, target);
-        } else if (suma == target) {
-            if (begin != pos_elem) {
-                pairs.add(new Pair(element, data[begin]));
+        } else if (suma == target && middle != pos_elem) {
+            pairs.add(new Pair(element, data[middle]));
+            if(begin != end){
+                this.resolveProblem(pairs, data, element, pos_elem, begin, middle - 1 , target);
+                this.resolveProblem(pairs, data, element, pos_elem, middle + 1, end, target);
             }
         }
     }

@@ -1,6 +1,6 @@
 package edu.isistan.solutions;
 
-import java.util.Arrays;
+import java.util.List;
 
 import edu.isistan.IProblemSolver;
 import edu.isistan.ProblemGen;
@@ -24,7 +24,9 @@ public class Solutions {
             System.out.println(start);
         }*/
         ProblemGen problemGen = new ProblemGen();
-        IProblemSolver solution = new QuickSortAndBinarySearch();
+        IProblemSolver solution = new QuickSortAndBinarySearch(); //Casi anda, 6/7
+        //IProblemSolver solution = new SolutionNaive(); Anda 7/7
+        //IProblemSolver solution = new SolutionNaive2(); => Anda, 7/7
         int target = 4;
         int[] data = new int[10];
         data[0] = 1;
@@ -40,6 +42,10 @@ public class Solutions {
         problemGen.setData(data);
         problemGen.setTarget(target);
         System.out.print(problemGen.getData());
-        System.out.println(" -- Pairs: " + solution.isSumIn(problemGen.getData(), target).size());
+        List<IProblemSolver.Pair> solutionPair = solution.isSumIn(problemGen.getData(), target);
+        System.out.println(" -- Pairs: " + solutionPair.size());
+        for(IProblemSolver.Pair pair: solutionPair){
+            System.out.println("(" + pair.getI() + ", " + pair.getJ() + ")");
+        }
     }
 }
