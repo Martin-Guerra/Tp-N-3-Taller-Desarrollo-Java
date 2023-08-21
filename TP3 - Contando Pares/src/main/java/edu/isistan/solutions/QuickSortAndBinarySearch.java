@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@SuppressWarnings("unused")
 public class QuickSortAndBinarySearch implements IProblemSolver {
 
     @Override
@@ -25,16 +24,15 @@ public class QuickSortAndBinarySearch implements IProblemSolver {
         int middle = (begin + end) / 2;
         int suma = element + data[middle];
 
-        if (suma < target && begin < end) {
-            this.resolveProblem(pairs, data, element, pos_elem, middle + 1, end, target);
-        } else if(suma > target && begin < end){
-            this.resolveProblem(pairs, data, element, pos_elem, begin, middle, target);
-        } else if (suma == target && middle != pos_elem) {
-            pairs.add(new Pair(element, data[middle]));
-            if(begin != end){
-                this.resolveProblem(pairs, data, element, pos_elem, begin, middle - 1 , target);
+        if (begin > end)
+            return;
+        else {
+            if (suma == target) {
+                pairs.add(new Pair(element, data[middle]));
+            } else if (suma < target)
                 this.resolveProblem(pairs, data, element, pos_elem, middle + 1, end, target);
-            }
+            else
+                this.resolveProblem(pairs, data, element, pos_elem, begin, middle - 1, target);
         }
     }
 }
