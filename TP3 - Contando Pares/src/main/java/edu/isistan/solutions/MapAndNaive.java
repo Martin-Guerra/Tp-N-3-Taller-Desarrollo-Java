@@ -39,15 +39,11 @@ public class MapAndNaive implements IProblemSolver {
         Map<Integer, Integer> numbers = new HashMap<>();
 
         for (int i = 0; i < data.length; i++) {
-            if (!numbers.containsKey(data[i])) {
-                int ocurrencias = 0;
-
-                for (int j = i; j < data.length; j++) {
-                    if (data[j] == data[i])
-                        ocurrencias++;
-                }
-
-                numbers.put(data[i], ocurrencias);
+            if (numbers.containsKey(data[i])) {
+                int oldValue = numbers.get(data[i]);
+                numbers.replace(data[i], oldValue, oldValue + 1);
+            } else {
+                numbers.put(data[i], 1);
             }
         }
 
