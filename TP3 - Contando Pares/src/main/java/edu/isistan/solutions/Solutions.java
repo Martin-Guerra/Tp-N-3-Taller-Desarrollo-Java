@@ -23,27 +23,19 @@ public class Solutions {
             start = System.currentTimeMillis() - start;
             System.out.println(start);
         }*/
+
         ProblemGen problemGen = new ProblemGen();
-        IProblemSolver solution = new QuickSortAndBinarySearch(); //Casi anda, 6/7
-        //IProblemSolver solution = new SolutionNaive(); Anda 7/7
-        //IProblemSolver solution = new SolutionNaive2(); => Anda, 7/7
+        IProblemSolver solution = new MapAndNaive(); 
+        
         int target = 4;
-        int[] data = new int[10];
-        data[0] = 1;
-        data[1] = 2;
-        data[2] = 3;
-        data[3] = 4;
-        data[4] = 5;
-        data[5] = 2;
-        data[6] = 0;
-        data[7] = 0;
-        data[8] = -1;
-        data[9] = 2;
+        int[] data = {1, 2, 3, 4, 5, 2, 0, 0, -1, 2};
+
         problemGen.setData(data);
         problemGen.setTarget(target);
-        System.out.print(problemGen.getData());
+
         List<IProblemSolver.Pair> solutionPair = solution.isSumIn(problemGen.getData(), target);
-        System.out.println(" -- Pairs: " + solutionPair.size());
+        System.out.println("------- Pairs: " + solutionPair.size() + " -------");
+
         for(IProblemSolver.Pair pair: solutionPair){
             System.out.println("(" + pair.getI() + ", " + pair.getJ() + ")");
         }
