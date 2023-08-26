@@ -13,26 +13,10 @@ public class MapAndBinarySearch implements IProblemSolver {
         Map<Integer, Integer> numbers = this.storeInMap(data);
         int[] optimizedData = numbers.keySet().stream().mapToInt(Integer::intValue).toArray();
 
+        int j = data.length - 1;
         for (int i = 0; i < optimizedData.length; i++) {
-            if(numbers.get(optimizedData[i]) > 1 && optimizedData[i]*2 == target){
-                int valueMap = numbers.get(optimizedData[i]);
-                while(valueMap > 1){
-                    for (int k = 0; k < valueMap - 1; k++) {
-                        pairs.add(new Pair(optimizedData[i], optimizedData[i]));
-                    }
-                    valueMap--;
-                }
-            } else {
-                for (int j = i + 1; j < optimizedData.length; j++) {
-                    if ((optimizedData[i] + optimizedData[j]) == target) {
-                        for (int k = 0; k < numbers.get(optimizedData[i]); k++) {
-                            pairs.add(new Pair(optimizedData[i], optimizedData[j]));
-                        }
-                    }
-                }
-            }
+            this.resolveProblem(pairs, optimizedData, optimizedData[i], i, i, j, target);
         }
-
         return pairs;
     }
 
