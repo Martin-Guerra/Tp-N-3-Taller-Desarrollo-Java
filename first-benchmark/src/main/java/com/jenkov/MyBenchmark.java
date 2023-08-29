@@ -34,30 +34,21 @@ package com.jenkov;
 import edu.isistan.IProblemSolver;
 import edu.isistan.ProblemGen;
 import edu.isistan.solutions.*;
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Mode;
-import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
 public class MyBenchmark {
 
-    @Benchmark @BenchmarkMode(Mode.SingleShotTime) @OutputTimeUnit(TimeUnit.SECONDS)
+    @Benchmark @Fork(value = 2, warmups = 0) @BenchmarkMode(Mode.Throughput) @OutputTimeUnit(TimeUnit.MILLISECONDS) @Warmup(iterations = 3, time = 10)
+    @Measurement(iterations = 3, time = 10)
     public void testMethod() {
-
         ProblemGen problemGen = new ProblemGen();
+        IProblemSolver solver = new MapAndNaive();
 
-        IProblemSolver solver = new MapAndBinarySearch();
-
-        for (int i = 0; i < 20; i++) {
-            problemGen.genRandomProblem(20000);
-            long start = System.currentTimeMillis();
-            int target = (int) (Math.random() * 2 * Integer.MAX_VALUE + Integer.MIN_VALUE / 2);
-
-            System.out.println(" -- Pairs: " + solver.isSumIn(problemGen.getData(), target).size());
-            start = System.currentTimeMillis() - start;
-        }
+        problemGen.genRandomProblem(2000);
+        int target = (int) (Math.random());
+        solver.isSumIn(problemGen.getData(), target);
     }
 
 }
