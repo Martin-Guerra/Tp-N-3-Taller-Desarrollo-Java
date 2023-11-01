@@ -40,11 +40,12 @@ import java.util.concurrent.TimeUnit;
 
 public class MyBenchmark {
 
-    @Benchmark @Fork(value = 2, warmups = 0) @BenchmarkMode(Mode.Throughput) @OutputTimeUnit(TimeUnit.MILLISECONDS) @Warmup(iterations = 3, time = 10)
-    @Measurement(iterations = 3, time = 10)
+    @Benchmark @Fork(value = 2, warmups = 2) @BenchmarkMode(Mode.All)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS) @Warmup(iterations = 3, time = 7)
+    @Measurement(iterations = 3, time = 7)
     public void testMethod() {
         ProblemGen problemGen = new ProblemGen();
-        IProblemSolver solver = new MapAndNaive();
+        IProblemSolver solver = new SolutionNaive2();
 
         problemGen.genRandomProblem(2000);
         int target = (int) (Math.random());
