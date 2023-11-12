@@ -27,8 +27,13 @@ public class QuickSortAndBinarySearch implements IProblemSolver {
         if (begin > end)
             return;
         else {
+            System.out.println("begin = " + begin + ", end = " + end + ", middle = " + middle);
             if (suma == target) {
-                pairs.add(new Pair(element, data[middle]));
+                if (middle != pos_elem)
+                    pairs.add(new Pair(element, data[middle]));
+
+                this.resolveProblem(pairs, data, element, pos_elem, middle + 1, end, target);
+                this.resolveProblem(pairs, data, element, pos_elem, begin, middle - 1, target);
             } else if (suma < target)
                 this.resolveProblem(pairs, data, element, pos_elem, middle + 1, end, target);
             else

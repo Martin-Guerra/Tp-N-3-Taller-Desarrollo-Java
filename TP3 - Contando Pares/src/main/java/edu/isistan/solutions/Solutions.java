@@ -25,10 +25,11 @@ public class Solutions {
         }*/
 
         ProblemGen problemGen = new ProblemGen();
-        IProblemSolver solution = new MapAndNaive(); 
+        IProblemSolver solution = new MergeSortAndBinarySearch();
         
-        int target = 4;
-        int[] data = {1, 2, 3, 4, 5, 2, 0, 0, -1, 2};
+        int target = 2;
+        //int[] data = {1, 2, 3, 4, 5, 2, 0, 0, -1, 2};
+        int[] data = {1, 1, 1, 1};
 
         problemGen.setData(data);
         problemGen.setTarget(target);
